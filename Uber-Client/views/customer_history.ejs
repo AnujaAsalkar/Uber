@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Customer UI Sample</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<style>
+		body {
+  margin: 0;
+  padding: 0;
+  font-family: 'roboto', arial, helvetica, sans-serif;
+  color: #444;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.3em;
+}
+* {
+  box-sizing: border-box;
+}
+.clear:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+p {
+  margin: 0;
+}
+p + p {
+  margin-top: .5em;
+}
+.wrapper {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 1em;
+}
+.wrapper:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 300;
+}
+.main a {
+  border-bottom: 1px dotted;
+}
+.main a:hover {
+  border: transparent;
+}
+.three-col:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+@media (min-width: 768px) {
+  .three-col > * {
+    width: 33.333%;
+    float: left;
+  }
+}
+.button {
+  display: inline-block;
+  background: #c76d5b;
+  color: white;
+  padding: 1em 1.25em;
+  text-transform: uppercase;
+  font-weight: normal;
+  cursor: pointer;
+}
+.button:hover {
+  background: #341d34;
+}
+h1 {
+  font-size: 36px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 20px;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+  font-family: 'roboto condensed';
+  line-height: 1em;
+}
+.page-title {
+  float: left;
+  padding: 0 2em;
+}
+.page-title h1 {
+  margin: 15px 0 0px;
+}
+.page-title .breadcrumbs {
+  font-size: 14px;
+}
+.page-title .breadcrumbs > * {
+  opacity: .5;
+}
+.page-title .breadcrumbs > *:last-child {
+  opacity: .75;
+}
+.logo {
+  border-left: 10px #000000 solid;
+  border-right: 1px #000000 solid;
+  background: #ffffff;
+  width: 220px;
+  float: left;
+  padding: 1em;
+}
+@media (min-width: 768px) {
+  .user-panel {
+    float: right;
+    margin-top: 15px;
+  }
+  .user-panel a {
+    margin-left: 1em;
+  }
+}
+.user-panel a {
+  text-transform: uppercase;
+}
+.user-panel .accedi,
+.user-panel .portafogli,
+.user-panel .guida {
+  display: inline-block;
+  color: black;
+  margin: 0 5px;
+}
+.user-panel .accedi .icon,
+.user-panel .portafogli .icon,
+.user-panel .guida .icon {
+  background: url(http://i64.tinypic.com/25sc2s1.png) no-repeat;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+}
+.user-panel .accedi:hover,
+.user-panel .portafogli:hover,
+.user-panel .guida:hover {
+  opacity: .7;
+}
+.user-panel .portafogli .icon {
+  background-position: left top;
+}
+.user-panel .accedi .icon {
+  background-position: center top;
+}
+.user-panel .guida .icon {
+  background-position: right top;
+}
+@media (max-width: 767px) {
+  .user-panel {
+    padding: 5px 0 10px;
+    margin: auto;
+    text-align: center;
+  }
+}
+.main {
+  max-width: 600px;
+  padding: 1px 2em 2em 2em;
+  position: relative;
+  margin-left: 220px;
+}
+.main label {
+  font-weight: normal;
+  margin-left: .5em;
+}
+.main .option-block {
+  margin-top: 1em;
+  line-height: 1em;
+}
+.action-panel {
+  position: absolute;
+  top: -70px;
+  right: 0;
+  z-index: 1;
+}
+.action-panel .action {
+  margin: .5em;
+  width: 25px;
+  height: 25px;
+  font-size: 32px;
+  line-height: 25px;
+  display: inline-block;
+  cursor: pointer;
+}
+.action-panel .action.add {
+  background-position: left center;
+}
+.action-panel .action.edit {
+  background-position: center;
+}
+.action-panel .action.delete:hover {
+  color: #c00;
+}
+.action-panel .action:Hover {
+  opacity: .75;
+}
+.action-panel .action:active {
+  transform: scale(1.2);
+}
+aside {
+  border-left: 10px #000000 solid;
+  border-right: 1px #000000 solid;
+  background: #ffffff;
+  width: 220px;
+  min-height: 650px;
+  float: left;
+}
+aside .main-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+aside .main-menu .icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+aside .main-menu a {
+  padding: 1em;
+  display: block;
+  text-decoration: none;
+  border-bottom: none;
+  position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+aside .main-menu a.active,
+aside .main-menu a:hover {
+  background: #000000;
+  color: white;
+  text-decoration: none;
+}
+aside .main-menu a.active:after {
+  width: 0;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 33%;
+  right: 0px;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid white;
+}
+
+@media (min-width: 768px) {
+  .footer .three-col > *:nth-child(1),
+  .footer .three-col > *:nth-child(3) {
+    width: 25%;
+  }
+  .footer .three-col > *:nth-child(2) {
+    width: 50%;
+  }
+}
+	</style>
+
+</head>
+<body>
+
+	<script>
+		 WebFontConfig = {
+    google: { families: [ 'Roboto:400,300,700:latin','Roboto+Condensed::latin', 'Satisfy::latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+	</script>
+
+	<section class="top clear">
+  <div class="logo">
+    <center><img src="https://cdn2.iconfinder.com/data/icons/social-flat-buttons-3/512/uber-128.png" width="50" /></center>
+  </div>
+  <div class="page-title">
+    <h1>My Trips</h1>
+
+  </div>
+</section>
+<section class="clear">
+  <aside>
+    <nav class="main-menu">
+      <ul>
+        <li><a href="#" class="active"><span class="icon ion-heart"></span>My Trips</a></li>
+        <li><a href="#"><span class="icon ion-android-star"></span>Profile</a></li>
+        <li><a href="#"><span class="icon ion-person-stalker"></span>Payment</a></li>
+        <li><a href="#"><span class="icon ion-ios-cart"></span>Free Rides</a></li>
+        <li><a href="#"><span class="icon ion-email"></span>Log Out</a></li>
+ 
+      </ul>
+    </nav>
+  </aside>
+  <section class="main">
+    <div class="container">
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>PickupDate</th>
+        <th>PickupTime</th>
+        <th>Payment Method</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%for(var i=0;i<date.length; i++){%>
+      <tr data-toggle="collapse" data-target="#accordion1" class="clickable">
+        <td><%=date[i]%></td>
+       <td><%=time[i]%></td>
+       
+      </tr>
+      <tr>
+       <td colspan="6">
+       <div id="accordion1" class="collapse">Hidden by Default1</div>
+        </td>
+      </tr>
+      
+     <%}%>
+    </tbody>
+  </table>
+</div>
+   
+  </section>
+</section>
+
+</body>
+</html>

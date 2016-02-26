@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+</head>
+<link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+<body>
+<h1>UBER</h1>
+	<div class="row">
+		<div class="col-sm-8" style="background-color: lavender;">
+			<img src="http://rideshareapps.com/wp-content/uploads/2015/06/refer-a-rideshare-driver.jpg" class="img-responsive" width="1200px" height="1200px"/>
+		</div>
+
+		<div class="col-sm-4" style="background-color: lavender;">
+		
+		
+		<form id="driver-lead-form" class="form-unlabeled js-submit-form" action="updateDriverProfile" method="POST">
+  <article class="error-list hidden">
+    <ul class="error-list-container">
+    </ul>
+  </article>
+  <div class="box-title">
+    <h5 class="winged-title subtitle">
+      <span>Update profile</span>
+    </h5>
+  </div>
+    <div data-js="login-info" class="login-group not_user">
+        <a class="btn rounded btn-primary cta-btn js-cta-hero hard--sides" id="login" href="/login/">
+          <div class="uber-img">Already have an account?</div>
+        </a>
+       
+    </div>
+  <div class="form-info">
+    <div class="form-group   ">
+      <div class="row form-row">
+        <div class="col-md-6 col-xs-6 md-push-right-half xs-push-right-half">
+  <input type="text" value="" name="driver_firstname" id="driver_firstname" autofocus placeholder="First Name">
+  <div class="error-notice"></div>
+        </div>
+        <div class="col-md-6 col-xs-6 md-push-left-half xs-push-left-half">
+  <input type="text" value="" name="driver_lastname" id="driver_lastname" placeholder="Last Name">
+  <div class="error-notice"></div>
+        </div>
+      </div>
+    </div>
+  <div class="form-group  ">
+  <input type="email" value="" name="driver_email" id="email" placeholder="name@example.com">
+  <div class="error-notice"></div>
+  </div>
+  <div class="form-group  ">
+  <input type="tel" value="" name="driver_contactinfo" id="contactinfo" placeholder="Phone">
+  <div class="error-notice"></div>
+  </div>
+  <div class="form-group  ">
+  <input type="password" value="" name="driver_password" id="password" placeholder="Password (At least 5 characters)">
+  <div class="error-notice"></div>
+  </div>
+  <div class="form-group  ">
+  <input type="text" value="" name="driver_cityname" id="city_name" placeholder="City">
+  <div class="error-notice"></div>
+  </div>
+  
+  <div class="form-group  ">
+  <div class="col-md-6 col-xs-6 md-push-left-half xs-push-left-half">
+  <input type="text" value="" name="driver_ssnnumber" id="last_name" placeholder=" SSN Number">
+  <div class="error-notice"></div>
+  </div>
+  <br>
+  
+  
+  <div class="row submit">
+    <div class="col-md-12">
+      <div class="form-group">
+     
+  <button type="submit" class="btn btn-primary drive_signup_submit_button">
+    <span class="preloader preloader--negative preloader--medium center-block hidden" id="submitButtonPreloader"></span>
+    <div id="submitButtonText">Update Profile</div>
+  </button>  
+ <!--   <button type="submit" value="NEXT" class="btn btn-success" ></button>
+  <input type="submit" value="Logout" class="btn btn-success" />-->
+  </div> 
+        </div>
+  </div>
+</form>
+		
+		
+		</div>
+	</div>
+
+
+</body>
+
+</html>

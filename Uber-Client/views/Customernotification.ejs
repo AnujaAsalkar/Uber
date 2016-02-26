@@ -1,0 +1,18 @@
+<html>
+<head>
+ <div style="width: 600px;">
+      <%=Customernotification.length%>
+    <%if(Customernotification.length==0){%>
+					<h3>You dont have any ride requests as of now</h3>
+				<%}
+				else {%>
+					<%for(var i=0;i<Customernotification.length;i++){%>
+						<%if(Customernotification[i].status=='accepted'){%>
+						<table cellspacing="10" cellpadding="10" style="margin:20px">
+						<tr><td></td><td><h4><%= Customernotification[i].rideID%></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><h4><input type="button" class="btn btn-default" id="<%= Customernotification[i].rideID%>" onclick="driveracceptRide(this)" value="accept ride"/></h4></td></tr>
+					<%}%>
+					</table>
+				<%}%>
+				<%}%>
+</head>
+</html>

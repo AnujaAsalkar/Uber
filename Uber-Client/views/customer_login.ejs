@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Uber </title>
+
+    <link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/uber-fonts/2.0.1/superfine.css"/>
+    <title>Login</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  </head>
+<body ng-app="UberApp" ng-controller="UberCtrl">
+  <p class="title background-line push-small--top">
+    <span>Sign In</span>
+  </p>
+  <form>
+   EMAIL :   <input type="email" ng-model="email"/><br/>
+   PASSWORD: <input type="password" ng-model="pwd"/><br/>
+   <input type="submit" ng-click="signIn()" value="LOGIN"/>    
+  </form>
+  <form>
+  
+  <input type="submit" ng-click="signUp()" value="SIGNUP"/> 
+  </form>
+  <script>
+  
+	angular.module('UberApp',[])
+	
+	function UberCtrl($scope,$http,$location) {
+		
+		$scope.signIn = function() {
+			$http({
+	            method: 'POST',
+	            url: '/signin',
+	            data: { "email": $scope.email, "pwd": $scope.pwd }
+	            
+	         }).success(function(response){
+	           alert("in success");
+	            if(response.login="Success")
+	           {
+	           	    alert("inside login success");
+	           		window.location.assign('/welcomedriver');
+	           }
+	           else
+	           		alert("else of success") 
+	        }).error(function(error){
+	            alert("error");
+	        });
+	    };
+	    
+	    $scope.signUp = function() {
+	    	alert("inside signup");
+			 $http({
+				       method: 'POST',
+				       url: '/signUp',
+				       data:
+				       {
+				       }  
+				       
+				   }).success(function(response){
+	           alert("success");
+	           if(response.code=200)
+	          	{
+	          		alert("inside success of signUP")
+	           		window.location.assign('/show_signup');
+	           	}
+	        }).error(function(error){
+	            alert("error");
+	        });
+	    };
+	}
+  </script>
+</body>
+</html>

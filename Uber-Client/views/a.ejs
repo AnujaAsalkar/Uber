@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js "> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    
+  Sign Up To Drive With Uber - Earn Cash With Your Car
+
+  </title>
+  <link rel="shortcut icon" href="https://d1a3f4spazzrp4.cloudfront.net/free-candy/images/favicon.3eb352c8f26c2652495fa86bd0e29063.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <meta property="fb:app_id" content="277064115737714"/>
+  <meta property="og:image" content="//d1a3f4spazzrp4.cloudfront.net/facebook/hd_shareimage.png">
+  <meta property="og:title" content="Sign Up To Drive With Uber - Earn Cash With Your Car">
+  <meta property="og:description" content="Drive with Uber and earn great money as an independent contractor. Get paid weekly just for helping our community of riders get rides around town. Be your own boss and get paid in fares for driving on your own schedule.">
+  <meta name="description" content="Drive with Uber and earn great money as an independent contractor. Get paid weekly just for helping our community of riders get rides around town. Be your own boss and get paid in fares for driving on your own schedule.">
+
+	<link href="https://d1a3f4spazzrp4.cloudfront.net/free-candy/stylesheets/superfine.075921fd01244488e0c8a87c08373585.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/free-candy/stylesheets/drive_short.3f1455abfc70c37dc246899bc5a68a9f.css" />
+	<link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/free-candy/stylesheets/drive_short_main.64a74b1a5932c205b75b846d32844fbe.css" />
+	<link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/free-candy/external/stylesheets/uber-fonts/3.0.0/superfine.239ba149d8e233e0c2017ed772bc8973.css"/>
+		<link rel="stylesheet" href="/stylesheets/driver.css" />
+				<link rel="stylesheet" href="/stylesheets/style.css" />
+		
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script> 
+	
+<script>
+		var uber = angular.module('Uber', []);
+		uber.controller('signup', function($scope, $http) {
+		$scope.submit = function() {
+			var error="";
+			var firstname_verification=$scope.first_name;
+			var lastname_verification= $scope.last_name;
+			var email_verification=$scope.email;
+			var password_verification=$scope.password;
+			var phone_verification=$scope.phone;
+			var city_verification=$scope.city;
+      var ssn_number=$scope.ssn_number;
+			
+			var val=/^[a-z A-Z]*$/;
+			if(firstname_verification=="" || firstname_verification==undefined)
+			{
+				document.getElementById("first_name").style.background="#ED2939";
+				error+="First Name is empty.\n";
+			}
+			else if(!val.test(firstname_verification))
+			{
+				document.getElementById("first_name").style.background="#ED2939";
+				error+="First Name contains illegal characters\n";
+			}
+			else
+				document.getElementById("first_name").style.background="white";
+				
+			
+			if(lastname_verification=="" || lastname_verification==undefined)
+			{
+				document.getElementById("last_name").style.background="#ED2939";
+				error+="Last Name is empty.\n";
+			}
+			else if(!val.test(lastname_verification))
+			{
+				document.getElementById("last_name").style.background="#ED2939";
+				error+="Last Name contains illegal characters\n";
+			}
+			else
+				document.getElementById("last_name").style.background="white";
+			
+		
+			var email_regexp=/^[a-z A-Z 0-9]*$/
+			var dot,at;
+			at=document.getElementById("email").value.indexOf("@");
+			dot=document.getElementById("email").value.lastIndexOf(".");
+			if(email_verification=="" || email_verification==undefined)
+			{
+				document.getElementById("email").style.background="#ED2939";
+			 	error+="Email is empty.\n";
+			}
+			else if(at<1 || dot-at<2)
+			{
+				document.getElementById("email").style.background="#ED2939";
+				error+="Email id is wrongly entered\n";
+			}
+			else
+				document.getElementById("email").style.background="white";
+				
+			if(password_verification=="" || password_verification==undefined)
+			{
+				document.getElementById("password").style.background="#ED2939";
+				error+="Password is empty.\n";
+			}
+			else if(password_verification.length<6 || password_verification.length>15)
+			{
+				document.getElementById("password").style.background="#ED2939";
+				error+="Password must be in between 6 and 15 characters in length\n";
+			}
+			else
+				document.getElementById("password").style.background="white";
+			
+			if(error!=""){
+				alert(error1);
+				return false;
+			}
+			
+			$http({
+				method : "POST",
+				url : '/next',
+				data : {"firstName" : $scope.first_name , "lastName": $scope.last_name,"email":$scope.email,"phone":$scope.phone,"password":$scope.password,"city":$scope.city,"ssn_number":$scope.ssn_number}
+			}).success(function(data) {
+				if(data.status=="success"){
+					alert(data.msg);
+					window.location.assign("/gettingStarted"); 
+				}
+				else if(data.status=="fail"){
+					document.getElementById('emailExists').style.display = "block";
+					document.getElementById('emailExists').innerHTML = data.msg;
+				}
+			}).error(function(error) {
+				alert("error2");
+			});
+		};
+	});
+	</script>
+
+</head>
+
+<body ng-app="Uber">
+  
+  
+  <!--[if lte IE 8]>
+     <p>You are using an <strong>outdated</strong> browser. Please <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  
+    <section class="wrapper">
+      
+  
+
+  <header style="background-color:#4835A8;"><div class="logo"></div>
+  
+    <div class="signup-to-ride position--absolute push-tiny text--uppercase flex--vertical-center">
+      <span class="signup-to-ride-prompt push-small--right">Not interested in driving?</span>
+      <a class="signup-to-ride-btn btn btn--tiny btn--tertiary push-small--right">Sign Up to Ride</a>
+    </div>
+  
+
+  </header>
+
+  
+  
+
+  <section class="content ">
+  
+    
+    
+    
+    
+
+  
+
+
+  <section class="hero billboard white-car-bg defer_css_image_loading">
+    <section class="messaging">
+      <section class="container">
+        <section class="row">
+          <article class="col-md-8 header-text">
+            <h1 style="color:black;font-size: 3.3em;
+    font-weight: 100;
+    margin: 10px 0;">Uber Needs Partners Like You.</h1>
+            <p style="color:black;font-size: 1.2em;
+    margin: 10px 0;">
+              Drive with Uber and earn great money as an independent contractor. Get paid weekly just for helping our community of riders get rides around town. Be your own boss and get paid in fares for driving on your own schedule.
+            </p>
+          </article>
+        </section>
+      </section>
+    </section>
+    <section class="hero-box">
+      <section class="row">
+        <article class="col-md-4 col-md-offset-8">
+          <div class="hero-box-container">
+            
+
+
+
+
+
+
+
+<form ng-submit="submit();" id="signupForm" ng-controller ="signup">
+  <article class="error-list hidden">
+    <ul class="error-list-container">
+    </ul>
+  </article>
+
+  <div class="box-title">
+    <h5 class="winged-title subtitle">
+      <span>Sign Up To Drive</span>
+    </h5>
+  </div>
+  
+    <div data-js="login-info" class="login-group not_user">
+      
+        <a class="btn rounded btn-primary cta-btn js-cta-hero hard--sides" id="login">
+          <div class="uber-img">Already have an account?</div>
+        </a>
+        <div class="box-title">
+          <h5 class="winged-title subtitle small">
+            <span>Or create a new account</span>
+          </h5>
+        </div>
+      
+    </div>
+  
+
+<div class="form-info">
+    <div class="form-group   ">
+      <div class="row form-row">
+        <div class="col-md-6 col-xs-6 md-push-right-half xs-push-right-half">
+          <input type="text" value="" name="first_name" id="first_name" ng-model="first_name" autofocus placeholder="First Name">
+  				<div class="error-notice"></div>
+        </div>
+        <div class="col-md-6 col-xs-6 md-push-left-half xs-push-left-half">
+          <input type="text" value="" name="last_name" id="last_name" ng-model="last_name" placeholder="Last Name">
+          		<div class="error-notice"></div>
+        </div>
+      </div>
+    </div>
+  
+    
+  	<div class="form-group  ">
+			<input type="email" value="" name="email" id="email" ng-model="email" placeholder="name@example.com">
+  				<div class="error-notice"></div>
+  	</div>
+  	<div class="form-group  ">
+  			<input type="tel" value="" name="contactinfo" id="contactinfo" ng-model="contactinfo" placeholder="Phone">
+  				<div class="error-notice"></div>
+	</div>
+    <div class="form-group  ">
+    		<input type="password" value="" name="password" id="password" ng-model="password" placeholder="Password (At least 5 characters)">
+				<div class="error-notice"></div>
+	</div>
+    <div class="form-group  ">
+			<input type="text" value="" name="city_name" id="city_name" ng-model="city_name" placeholder="City">
+  				<div class="error-notice"></div>
+  	</div>
+    		<input type="hidden" value="" name="lat" id="lat" placeholder="form.placeholder.lat">
+				<div class="error-notice"></div>
+			<input type="hidden" value="" name="lng" id="lng" placeholder="form.placeholder.lng">
+				<div class="error-notice"></div>
+			<input type="hidden" value="" name="location" id="location" placeholder="form.placeholder.location">
+ 				<div class="error-notice"></div>
+ 			<input type="hidden" value="" name="place_id" id="place_id" placeholder="form.placeholder.place_id">
+  				<div class="error-notice"></div>
+  			<input type="hidden" value="P2P" name="flow_type" id="flow_type" placeholder="form.placeholder.flow_type">
+  				<div class="error-notice"></div>
+  				<div class="referral-code-row">
+    <div class="form-group  ">
+			<input type="text" value="" name="ssn_number" placeholder=" SSN Number"  id="ssn_number" ng-model="ssn_number">
+				<div class="error-notice"></div>
+  	</div>
+   </div>
+   <div class="channel-sources-select hidden--portable" data-dropdown-channel=""
+          data-dropdown-territory-slug=""
+          data-dropdown-country-slug="">
+        <div class="select">
+          <select></select>
+        </div>
+      </div>
+   </div>
+  <div class="row submit">
+    <div class="col-md-12">
+      <div class="form-group">
+		<button type="submit" class="btn btn-primary drive_signup_submit_button">
+    		<span class="preloader preloader--negative preloader--medium center-block hidden" id="submitButtonPreloader"></span>
+    			<div>Next</div>
+  		</button>
+  
+  </div>
+       <div class="commercial-partner-row push-small--top">
+          <input type="checkbox" class="checkbox-input" name="is_commercial_partner" id="is_commercial_partner" />
+          <label class="checkbox" for="is_commercial_partner">I plan to drive a livery or taxi vehicle.</label>
+        </div>
+      
+      <p>By proceeding, I agree that Uber or its representatives may contact me by email, phone, or SMS (including by automatic telephone dialing system) at the email address or number I provide, including for marketing purposes. I have read and understand the relevant <a >Driver Privacy Statement.</a> <br><br><br>Stated earnings where location is not specified are based on median national earnings of partners in the past month. Actual earnings may vary depending on time of day, location and other factors.</p>
+    </div>
+  </div>
+</form>
+          </div>
+        </article>
+      </section>
+    </section>
+  </section>
+  <section class="container main">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article class="row feature-row">
+  <div class="col-md-3">
+    <div     style="background: url(https://d1a3f4spazzrp4.cloudfront.net/free-candy/images/gfx/gfxMoney.83b3eb31be66da3ae5b329dc90ef2aa0.png) center bottom no-repeat;
+    height: 155px;
+    width: 190px;"></div>
+  </div>
+  <div class="col-md-5">
+    <h3>Make good money.</h3>
+    <p>Got a car? Turn it into a money machine. The city is buzzing and Uber makes it easy for you to cash in on the action. Plus, you've already got everything you need to get started.</p>
+  </div>
+</article>
+<article class="row feature-row">
+  <div class="col-md-3">
+    <div style="background: url(https://d1a3f4spazzrp4.cloudfront.net/free-candy/images/gfx/gfxTime.0574602f784f618211f22967743131e8.png) center bottom no-repeat;
+    height: 190px;
+    width: 190px;
+    background-color:'red';"></div>
+  </div>
+  <div class="col-md-5">
+    <h3>Drive when you want.</h3>
+    <p>Need something outside the 9 to 5? As an independent contractor with Uber, you’ve got freedom and flexibility to drive whenever you have time. Set your own schedule, so you can be there for all of life’s most important moments.</p>
+  </div>
+</article>
+<article class="row feature-row">
+  <div class="col-md-3">
+    <div style="background: url(https://d1a3f4spazzrp4.cloudfront.net/free-candy/images/gfx/gfxFreedom.572d9f91d301a8e266eabe7323868c62.png) center bottom no-repeat;
+    height: 169px;
+    width: 190px;"></div>
+  </div>
+  <div class="col-md-5">
+    <h3>No office, no boss.</h3>
+    <p>Whether you’re supporting your family or saving for something big, Uber gives you the freedom to get behind the wheel when it makes sense for you. Choose when you drive, where you go, and who you pick up.</p>
+  </div>
+</article>
+  </section>
+  <section>
+    
+
+  
+  
+  
+  
+
+
+<div class="modal fade" id="commercial-modal" tabindex="-1" role="dialog" aria-labelledby="commercial-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="commercial-modal-label">Confirm your commercial account</h4>
+      </div>
+      <div class="modal-body">
+        <div class="commercial-img"></div>
+          You plan to drive or operate a commercially insured livery vehicle. Or, you plan to drive a licensed and certified commercial taxi.
+      </div>
+      <div class="modal-footer">
+        
+          <a class="btn rounded btn-primary btn-modal yes-commercial" id="yes-commercial" data-dismiss="modal" >Yes, sign up for a commercial account</a>
+          <a class="btn rounded btn-default btn-modal" data-dismiss="modal">No, take me back</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+  <footer></footer>
+</section>
+
+    </section>
+  
+  <div class="javascripts" style="display:none;">
+    
+    
+    
+  
+    
+   </div>
+  <body>
+
+</html>

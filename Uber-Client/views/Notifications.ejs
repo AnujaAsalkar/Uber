@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&callback=initMap" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap" async defer></script>
+        <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+ <script type="text/javascript" 
+           src="http://maps.google.com/maps/api/js?sensor=false"></script>
+ <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 40%;
+        width: 40%;
+      }
+    </style>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h3>Driver</h3>
+  <div class="center-block three-quarters push-half--bottom"><div class="img--circle img--bordered img--shadow fixed-ratio fixed-ratio--1-1"><img src="https://d1w2poirtb3as9.cloudfront.net/default.jpeg" class="img--full fixed-ratio__content"></div></div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Maps</a></li>
+        <li><a href="profile">Profile</a></li>
+        <li><a href="#">Payment</a></li>
+        <li><a href="#">Logout</a></li>
+        <li><a href="Notifications">Notifications</a>
+      </ul>
+       </div>
+    
+    <div class="col-md-5">
+    
+  
+    hiiii
+   
+    <br><br>
+      <div style="width: 600px;">
+      <%=requestedRides.length%>
+    <%if(requestedRides.length==0){%>
+					<h3>You dont have any ride requests as of now</h3>
+				<%}
+				else {%>
+					<%for(var i=0;i<requestedRides;i++){%>
+						<%if(requestedRides[i].status=='requested'){%>
+						<table cellspacing="10" cellpadding="10" style="margin:20px">
+						<tr><td></td><td><h4><%= requestedRides[i].rideID%></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><h4><input type="button" class="btn btn-default" id="<%= requestedRides[i].rideID%>" onclick="driveracceptRide(this)" value="accept ride"/></h4></td></tr>
+					<%}%>
+					</table>
+				<%}%>
+				<%}%>
+		 <%if(requestedRides.length==0){%>
+				
+				<%}
+				else {%>
+					<%for(var i=0;i<requestedRides.length;i++){%>
+						<%if(requestedRides[i].status=='accepted'){%>
+						<table cellspacing="10" cellpadding="10" style="margin:20px">
+						<tr><td></td><td><h4><%= requestedRides[i].rideID%></h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><h4><input type="button" class="btn btn-default" id="<%= requestedRides[i].rideID%>" onclick="driverStarRide(this)" value="Start ride"/></h4></td></tr>
+					<%}%>
+					</table>
+				<%}%>
+				<%}%>
+   </div>
+   
+   
+   
+   
+   
+    
+    
+    <div class="clearfix visible-lg"></div>
+  </div>
+</div>
+</div>
+ <div class="col-md-4">hiii</div>
+
+<script>
+function driveracceptRide(objButton)
+{
+alert("inside function");
+var a = objButton.id;
+alert(a);
+	$.ajax({
+	     		type: "POST",
+	     		url: "/driveraccepted",
+	     		data: 'src='+ a,
+	     		
+	     		success: function(data)
+	     		{
+	     		//	 alert(JSON.stringify(data));
+	 	            window.location.assign('/directions');
+	 	            //if(data.login == "Success")
+	 	           		//window.location = '/drivermaps';
+	     		}
+	    });
+}
+  </script> 
+   
+    
+</body>
+</html>

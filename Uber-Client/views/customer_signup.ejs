@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Facebook</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+<body ng-app="customer_ang" ng-controller="signup_ang">
+<form>
+Email:  <input type="email" value="" name="email" id="email" ng-model="email">
+Password: <input type="password" name="pwd" ng-model="pwd">
+First Name: <input type="text" ng-model="first_name"><br>
+Last Name: <input type="text" ng-model="last_name"><br>
+Mobile:  <input type="tel" value="" name="mobile" id="mobile" ng-model="mobile"><br>
+Credit Card Number:  <input type="tel" value="" name="card_number" id="card_number" ng-model="card_number"><br>
+CVV: <input type="tel" value="" name="card_code" id="card_code" ng-model="card_code"><br>
+<input type="submit" ng-click="createAccount()"/>
+</form>
+<script>
+//loading the angularJS module
+var c = angular.module('customer_ang', []);
+//defining the controller
+c.controller('signup_ang', function($scope, $http){
+	$scope.createAccount=function(){
+	alert("ohhoo..!!!.");
+			$http({
+				method : "POST",
+				url : '/cust_signup',
+				data : {
+					"email" : $scope.email,
+	            	"pwd" : $scope.pwd,
+				 	"first_name" : $scope.first_name,
+					"last_name" : $scope.last_name,
+					"mobile": $scope.mobile,
+	            	"card_number":$scope.card_number,
+	            	"card_code":$scope.card_code,
+				}
+				}).success(function(response){
+					 alert("in success");
+	           	 	if(response.login="Success")
+	           		{	
+	           			window.location = '/welcomedriver';
+	           		}
+	          		else
+	           			alert("else of success") 
+				}).error(function(response){
+					alert("error");
+				});
+		}
+});
+</script>
+
+</body>
+</html>
